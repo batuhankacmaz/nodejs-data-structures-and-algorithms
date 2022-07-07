@@ -222,7 +222,7 @@ console.log(
 
 //Leaf nodes on Binary Search Tree
 
-function binary_search_tree(array) {
+/* function binary_search_tree(array) {
   if (array.length === 1) {
     console.log(array[0]);
     return;
@@ -233,6 +233,41 @@ function binary_search_tree(array) {
   binary_search_tree(array.slice(right));
 }
 
-binary_search_tree([890, 325, 290, 530, 965]);
+binary_search_tree([890, 325, 290, 530, 965]); */
 
 //??
+
+// --------------------------------------8-----------------------------------
+
+// Find Greatest common divisor
+
+/* function GCD(number1, number2) {
+  if (number2 === 0) {
+    return number1;
+  }
+  return GCD(number2, number1 % number2);
+}
+
+console.log(GCD(50, 100)); */
+
+// --------------------------------------9-----------------------------------
+
+//permutation of string
+
+/* function findPerms(str) {
+  if (str.length === 0) return "";
+  if (str.length === 1) return str;
+  let result = [];
+  for (let i = 0; i < str.length; i++) {
+    const currentChar = str[i];
+    const remainingChars = str.slice(0, i) + str.slice(i + 1);
+    const remainingCharsPermuted = findPerms(remainingChars);
+    for (let j = 0; j < remainingCharsPermuted.length; j++) {
+      const permutation = currentChar + remainingCharsPermuted[j];
+      result.push(permutation);
+    }
+  }
+  return result;
+}
+const final = findPerms("1243");
+console.log(final); */
