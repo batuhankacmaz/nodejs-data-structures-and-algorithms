@@ -178,7 +178,7 @@ console.log(isAnagram("abcdsa", "dcbads")); */
 
 //20-) Reverse a number
 
-function reverseNumber(number) {
+/* function reverseNumber(number) {
   let numberToString = number.toString();
   let reversedNumber = "";
   for (let i = numberToString.length - 1; i >= 0; i--) {
@@ -187,4 +187,4 @@ function reverseNumber(number) {
   return parseInt(reversedNumber);
 }
 
-console.log(reverseNumber(12032));
+console.log(reverseNumber(12032)); */
