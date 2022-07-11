@@ -1,3 +1,4 @@
+// ilk giren son cikar
 /* Queues */
 
 function Queue() {

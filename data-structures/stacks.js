@@ -1,3 +1,4 @@
+// ilk giren ilk cikar
 /* Stacks! */
 
 // functions: push, pop, peek, length
