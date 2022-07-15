@@ -62,7 +62,8 @@ function quickSort(items, left, right) {
 // first call to quick sort
 let items = [7, 4, 5, 3, 6, 1];
 var sortedArray = quickSort(items, 0, items.length - 1);
-console.log(sortedArray); //prints [2,3,5,6,7,9]
+
+console.log("sorted Array", sortedArray); //prints [2,3,5,6,7,9]
 
 // insertion sort
 function insertionSort(arr, n) {

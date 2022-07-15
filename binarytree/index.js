@@ -63,7 +63,7 @@ class BST {
     if (!node) return [];
 
     const queue = [node];
-    console.log("queue: ", queue);
+    console.log("queue: ", queue.length);
     const result = [];
     let count = 0;
 
@@ -113,6 +113,25 @@ class BST {
   }
 }
 
+function insertLevelOrder(arr, i) {
+  let root = null;
+  if (i < arr.length) {
+    root = new Node(arr[i]);
+
+    root.left = insertLevelOrder(arr, 2 * i + 1);
+    root.right = insertLevelOrder(arr, 2 * i + 2);
+  }
+  return root;
+}
+
+function inOrder(root) {
+  if (root !== null) {
+    inOrder(root.left);
+    console.log(root.data);
+    inOrder(root.right);
+  }
+}
+
 let bst = new BST();
 bst.insert(8);
 bst.insert(6);
@@ -135,8 +154,14 @@ console.log("\n");
 
 console.log(bst.findNode(root, 9));
 
-//console.log("levelOrder");
-/* console.log(bst.levelOrder(root));
+console.log("levelOrder");
+console.log(bst.levelOrder(root));
 console.log(bst.printLeafNodes(root));
-console.log(bst.isBalanced(root)); */
+console.log(bst.isBalanced(root));
 console.log(bst.checkHeight(root));
+
+let arr = [1, 2, 3, 4, 5, 6, 6, 6, 6];
+console.log("before tree:", arr);
+let finalRoot = insertLevelOrder(arr, 0);
+console.log("after tree:");
+inOrder(finalRoot);

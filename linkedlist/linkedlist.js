@@ -159,6 +159,7 @@ class LinkedList {
       this.head = current; //1
     }
   }
+
   // 5n + 3 O(n)
   maxValue() {
     let current = this.head;
@@ -199,6 +200,17 @@ class LinkedList {
         }
       }
       firstNode = firstNode.next;
+    }
+  }
+  findKthToLast(k, head) {
+    // do recursively
+    if (head === null || k < 1) {
+      return;
+    } else if (k === 1) {
+      console.log(head.element);
+      this.findKthToLast(k, head.next);
+    } else {
+      this.findKthToLast(k - 1, head.next);
     }
   }
 }
@@ -251,3 +263,4 @@ console.log("middle element is", ll.findMiddleElement());
 ll.removeDuplicates();
 console.log("removed duplicateds");
 ll.printList();
+ll.findKthToLast(5, ll.head);
