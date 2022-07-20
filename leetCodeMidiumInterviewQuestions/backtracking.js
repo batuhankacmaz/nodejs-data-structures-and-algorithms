@@ -136,3 +136,8 @@ var maxArea = function (height) {
 };
 
 console.log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]));
+
+var getSum = function (a, b) {
+  if (a > 0) {
+  }
+};
