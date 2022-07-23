@@ -10,12 +10,11 @@ var subsets = function (nums) {
     }
 
     //right side the three
-
-    dfs(i + 1);
-    //left side the tree
     subres.push(nums[i]);
     dfs(i + 1);
+    //left side the tree
     subres.pop();
+    dfs(i + 1);
   };
   dfs(0);
   return res;
@@ -130,3 +129,108 @@ function combinationSum2(candidates, target) {
     }
   }
 }
+
+// WORD SEARCH
+var exist = function (board, word) {
+  let rowLen = board.length;
+  let colLen = board[0].length;
+  let visited = new Set();
+
+  let dfs = (r, c, i) => {
+    if (i === word.length) return true;
+    if (r < 0 || r >= rowLen || c < 0 || c >= colLen || board[r][c] !== word[i])
+      return false;
+
+    let curel = r + "," + c;
+    if (visited.has(curel)) return false;
+    visited.add(curel);
+
+    let result =
+      dfs(r + 1, c, i + 1) ||
+      dfs(r - 1, c, i + 1) ||
+      dfs(r, c + 1, i + 1) ||
+      dfs(r, c - 1, i + 1);
+
+    visited.delete(curel);
+    return result;
+  };
+
+  for (let r = 0; r < rowLen; ++r) {
+    for (let c = 0; c < colLen; ++c) {
+      if (dfs(r, c, 0)) return true;
+    }
+  }
+  return false;
+};
+
+// PALINDROME PARTITIONING
+
+var partition = function (s) {
+  // global result
+  const results = [];
+  let result = [];
+
+  let dfs = (i) => {
+    // base case
+    if (i === s.length) {
+      results.push(result.slice());
+      return;
+    }
+
+    // dfs recursive case
+    for (let j = i; j < s.length; ++j) {
+      if (isPalindrome(s, i, j)) {
+        result.push(s.slice(i, j + 1));
+        dfs(j + 1);
+        result.pop();
+      }
+    }
+  };
+  dfs(0);
+  return results;
+};
+
+const isPalindrome = function (s, start, end) {
+  while (start < end) {
+    if (s[start] !== s[end]) return false;
+    start++;
+    end--;
+  }
+  return true;
+};
+
+var letterCombinations = function (digits) {
+  if (digits.length === 0) return [];
+  const results = [];
+  let result = [];
+
+  const alpha = {
+    2: "abc",
+    3: "def",
+    4: "ghi",
+    5: "jkl",
+    6: "mno",
+    7: "pqrs",
+    8: "tuv",
+    9: "wxyz",
+  };
+
+  const dfs = (i) => {
+    if (i === digits.length) {
+      results.push(result.join(""));
+      return;
+    }
+
+    let chars = alpha[digits[i]];
+
+    for (let char of chars) {
+      result.push(char);
+      dfs(i + 1);
+      result.pop();
+    }
+  };
+  dfs(0);
+  return results;
+};
+
+console.log(letterCombinations("23"));
