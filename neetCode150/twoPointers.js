@@ -75,3 +75,24 @@ var maxArea = function (height) {
 };
 
 console.log(maxArea([2, 3, 4, 5, 18, 17, 6]));
+
+// BACK SPACE STRING COMPARE
+var backspaceCompare = function (s, t) {
+  s = parse(s);
+  t = parse(t);
+  return s === t;
+};
+
+const parse = (s) => {
+  const stack = [];
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === "#") {
+      stack.pop();
+    } else {
+      stack.push(s[i]);
+    }
+  }
+  return stack.join("");
+};
+
+console.log(backspaceCompare("ab#c", "ad#c"));

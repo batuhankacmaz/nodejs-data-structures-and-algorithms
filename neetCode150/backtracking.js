@@ -124,6 +124,7 @@ function combinationSum2(candidates, target) {
         continue;
       }
       combo.push(candidates[i]);
+      // if you dont add the  plus one then you use for example 1 this is candidate to several times and if you use i+1 then you dont use because you next
       getCombos(target - candidates[i], i + 1);
       combo.pop();
     }
@@ -234,3 +235,73 @@ var letterCombinations = function (digits) {
 };
 
 console.log(letterCombinations("23"));
+
+var partition = function (s) {
+  //global variable
+  const results = [];
+  const result = [];
+
+  // dfs
+  const dfs = (i) => {
+    if (i === s.length) {
+      results.push(result.slice());
+      return;
+    }
+
+    for (let j = i; j < s.length; j++) {
+      if (isPalindrome(i, j)) {
+        result.push(s.slice(i, j + 1));
+        dfs(i + 1);
+        result.pop();
+      }
+    }
+  };
+
+  const isPalindrome = (left, right) => {
+    let l = left;
+    let r = right;
+    while (l < r) {
+      if (s[l] !== s[r]) return false;
+      r--;
+      l++;
+    }
+    return true;
+  };
+  return results;
+};
+
+// GENERATE PARENHTESES
+
+const generateParenthesis = function (n) {
+  // global result
+  const result = [];
+  const subresult = [];
+
+  //dfs recursive helper
+  const dfs = (start, oCount, cCount) => {
+    // backtracking case
+    if (oCount > n) return;
+    if (cCount > oCount) return;
+
+    //base case
+    if (start === n * 2) {
+      result.push(subresult.join(""));
+      return;
+    }
+
+    //dfs recursive case
+
+    //add open paran
+    subresult.push("(");
+    dfs(start + 1, oCount + 1, cCount);
+    subresult.pop();
+
+    //add close paran
+    subresult.push(")");
+    dfs(start + 1, oCount, cCount + 1);
+    subresult.pop();
+  };
+
+  dfs(0, 0, 0);
+  return result;
+};

@@ -305,7 +305,7 @@ const canFinish = function (numCourses, prerequisites) {
 
 console.log(canFinish(2, [[1, 0]]));
 
-// SURROUNDED REGIONS II
+// COURSE SCHEDULE II
 
 var findOrder = function (numCourses, prerequisites) {
   const prereq = [];
